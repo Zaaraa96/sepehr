@@ -148,6 +148,20 @@ const get_user_by_id = (id, userProjection) => {
     })
 }
 
+
+const get_user_by_userId = (id, userProjection) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            const res= await UserModel.findOne({userIntId:id},userProjection??_userProjection);
+            if(!res)
+                reject(error_model(ERRORS.noUserFound, Messages.noUserFound, 'no user found by this id'));
+            resolve(res);
+        } catch (e) {
+            reject(error_model(ERRORS.cantGetUser, Messages.cantGetUser, e));
+        }
+    })
+}
+
 const register_normal_user=(user)=>{
     return new Promise(async (resolve, reject) => {
         try {
@@ -255,5 +269,6 @@ module.exports = {
     change_profile_picture,
     edit_normal_user,
     search_users,
-    delete_user
+    delete_user,
+    get_user_by_userId
 }

@@ -11,7 +11,7 @@ function _generateJWTToken(data) {
     return new Promise((resolve,reject) => {
 
         try{
-            jwt.sign(data, privateKey, {algorithm: 'HS512'}, function (err, token) {
+            jwt.sign(data, privateKey, {algorithm: 'RS256'}, function (err, token) {
                 if (err)
                     reject(error_model(ERRORS.cantCreateToken, Messages.cantCreateToken, err))
                 // console.log(token);
@@ -44,7 +44,7 @@ module.exports.generateJWTToken = async function (id) {
 module.exports.validateJWT = async function (data) {
     return new Promise((resolve,reject) => {
         try {
-            const decoded = jwt.verify(data, privateKey,{algorithm: 'HS512'});
+            const decoded = jwt.verify(data, privateKey,{algorithm: 'RS256'});
             if(decoded.exp < new Date().getTime()) //token has expired
             {
                 reject(error_model(ERRORS.invalidToken, Messages.INVALID_token, 'token is expired'))

@@ -128,7 +128,7 @@ const get_user_handler = (async (req, res) => {
     projectLogger('get user is called');
 
     try{
-        const result = await user_service.get_user_by_id(req.params.id,);
+        const result = await user_service.get_user_by_userId(req.params.id,);
         res.suc(result, 200);
     }catch (e) {
         res.err(400, e)
