@@ -14,7 +14,7 @@ const _check_previous_user =(user)=>{
                 await UserModel.findOne({phoneNumber: user.phoneNumber});
 
             if (previous_user) {
-                reject(error_model(ERRORS.userPhoneNumberIsRegistered, Messages.userPhoneNumberIsRegistered, 'phone number is not registered'));
+                reject(error_model(ERRORS.userPhoneNumberIsRegistered, Messages.userPhoneNumberIsRegistered, 'phone number is registered'));
                 return;
             }
 

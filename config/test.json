@@ -4,7 +4,7 @@
     },
     "app":{
         "app_title":"CLIENT app",
-        "service_port": 3000
+        "service_port": 3003
     },
-    "host": "http://localhost:3000"
+    "host": "http://localhost:3003"
 }
