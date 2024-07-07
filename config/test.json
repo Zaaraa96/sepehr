@@ -1,0 +1,10 @@
+{
+    "database": {
+        "main_mongo_url":"mongodb://127.0.0.1:27017/sepehr_test"
+    },
+    "app":{
+        "app_title":"CLIENT app",
+        "service_port": 3000
+    },
+    "host": "http://localhost:3000"
+}

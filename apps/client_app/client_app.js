@@ -48,3 +48,5 @@ app.listen(port, () => {
   console.log(config.get('app.app_title')  + ` listening at ${port}`)
   db.connect();
 })
+
+module.exports = app;

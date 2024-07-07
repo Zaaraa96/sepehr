@@ -1,10 +1,10 @@
 const config = require('config');
 const mongoose = require('mongoose');
 
-module.exports = {
-    connect : () =>{
-        console.log(config.database.main_mongo_url)
-        mongoose
+
+async function connect () {
+    console.log(config.database.main_mongo_url)
+    mongoose
         .connect(config.database.main_mongo_url, {
         })
         .then((db, err) => {
@@ -16,10 +16,16 @@ module.exports = {
                 console.log('connected to database')
             }
         }).catch((e)=>{
-            console.log(e)
-            console.log('failed to connect to database')
-        });
-    }
+        console.log(e)
+        console.log('failed to connect to database')
+    });
+}
+async function dropDatabase() {
+    await mongoose.connection.dropDatabase();
+}
+module.exports = {
+    connect,
+    dropDatabase
 }
 
 
